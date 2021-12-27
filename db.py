@@ -6,8 +6,11 @@ import pymongo
 import json
 
 # 读取用户配置文件
-with open('conf/config.json', 'r') as conf:
-    config = json.load(conf)
+try:
+    with open('conf/config.json', 'r') as conf:
+        config = json.load(conf)
+except FileNotFoundError:
+    exit('配置文件不存在')
 
 # 基于配置文件信息判断是否已经进行初始化
 if config['init'] != 1:

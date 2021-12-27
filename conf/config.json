@@ -1,4 +1,5 @@
 {
+    "init": 0,
     "db_address": "",
     "db_port": ""
 }
