@@ -34,3 +34,6 @@ class sql():
         self.col_name = col_name
         self.db = client[db_name]
         self.col = self.db[col_name]
+        if self.db.list_collections().count() == 0:
+            self.db['init'].insert_one({'status': 'inited', 'time': time.time()})
+
