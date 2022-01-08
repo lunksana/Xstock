@@ -27,7 +27,7 @@ try:
 except pymongo.errors.ConnectionFailure:
     exit('数据库连接失败')
 
-# 数据库操作
+# 数据库操作，一般情况下库房的数量会随着分店数量的增加而增加，如果每个库房设置一个数据库，这样做统筹管理的时候会比较麻烦，也不好统计完整的库存情况，所以每个库房对应一个 collection 比较合理
 class sql():
     def __init__(self, db_name, col_name):
         self.db_name = db_name
