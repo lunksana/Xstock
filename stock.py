@@ -34,3 +34,28 @@ class sql():
         self.col_name = col_name
         self.db = client[db_name]
         self.col = self.db[col_name]
+        if self.db.list_collections().count() == 0:
+            self.db['init'].insert_one({'status': 1, 'time': time.time()})
+
+# 查询数据，query数据支持模糊查询            
+    def search(self, query: dict):
+        return self.col.find(query)
+
+# 增加数据    
+    def add(self, data: dict):
+        self.col.insert(data)
+
+# 更新数据    
+    def update(self, query: dict, data: dict):
+        self.col.update(query, data)
+    
+# 删除数据
+    def delete(self, query: dict):
+        self.col.delete_one(query)
+
+# python 网页构建
+class html():
+    def __init__(self, title, body):
+        self.title = title
+        self.body = body
+
